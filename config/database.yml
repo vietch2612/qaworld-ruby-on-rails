@@ -11,19 +11,15 @@ default: &default
 
 development:
   adapter: postgresql
-  encoding: unicode
-  database: qa_developemnt
-  pool: 5
-  username: hoaiviet
-  password:
+  host: localhost
+  username: user
+  database: app-dev
 
 test:
   adapter: postgresql
-  encoding: unicode
-  database: qa_test
-  pool: 5
-  username: hoaiviet
-  password:
+  host: localhost
+  username: user
+  database: app-test
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -31,8 +27,6 @@ test:
 
 production:
   adapter: postgresql
-  encoding: unicode
-  database: qa_production
-  pool: 5
-  username: hoaiviet
-  password:
+  host: localhost
+  username: user
+  database: app-production
