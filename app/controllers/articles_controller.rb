@@ -3,18 +3,26 @@ class ArticlesController < ApplicationController
   http_basic_authenticate_with name: "dhh", password: "password", except: [:index, :show]
 
   def index
-    @articles = Article.all.order('created_at DESC')
     @categories = Category.all.order('title')
+
+    if params[:category_id].nil? then
+      @articles = Article.all.order('created_at DESC')
+      @list_content = "List of all articles"
+    else
+      @articles = Article.find([params[:category_id]])
+      @list_content = "Filter by " + Category.find(params[:category_id]).title
+    end
   end
 
   def show
     @article = Article.find(params[:id])
-    @categories = Category.all
+    @category_title = Category.find(@article.category_id)
+    @categories = Category.all.order('title')
   end
 
   def new
     @article = Article.new
-    @categories = Category.all
+    @categories = Category.all.order('title')
   end
 
   def edit
@@ -22,7 +30,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @category = Category.find(params[:category_id])
+    @category = Category.find(params[:article][:category])
     @article = @category.articles.create(article_params)
     # @article = Article.new(article_params)
 
@@ -52,7 +60,7 @@ class ArticlesController < ApplicationController
 
   private
     def article_params
-      params.require(:article).permit(:title, :text, :category)
+      params.require(:article).permit(:title, :text)
     end
 
 end
