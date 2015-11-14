@@ -8,9 +8,9 @@
         <meta name="author" content="">
         <title>Blog Post - Start Bootstrap Template</title>
         <!-- Bootstrap Core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="../assets/bootstrap.min.css" rel="stylesheet">
         <!-- Custom CSS -->
-        <link href="css/blog-post.css" rel="stylesheet">
+        <link href="../assets/blog-post.css" rel="stylesheet">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -31,11 +31,11 @@
                     <h1><%= @article.title %></h1>
                     <!-- Author -->
                     <p class="lead">
-                        by <a href="#">Start Bootstrap</a>
-                    </p>
+                    by <a href="https://www.facebook.com/vietch2612">Cao Hoai Viet</a>
+                </p>
                     <hr>
                     <!-- Date/Time -->
-                    <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+                    <p><span class="glyphicon glyphicon-time"></span> Posted at: <%= @article.created_at %></p>
                     <hr>
                     <!-- Preview Image -->
                     <img class="img-responsive" src="http://placehold.it/900x300" alt="">
@@ -94,8 +94,8 @@
 </div>
 <!-- /.container -->
 <!-- jQuery -->
-<script src="js/jquery.js"></script>
+<script src="../assets/jquery.js"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<script src="../assets/bootstrap.min.js"></script>
 </body>
 </html>
