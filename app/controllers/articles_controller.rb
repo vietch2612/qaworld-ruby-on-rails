@@ -3,8 +3,8 @@ class ArticlesController < ApplicationController
   http_basic_authenticate_with name: "dhh", password: "password", except: [:index, :show]
 
   def index
-    @articles = Article.all
-    @categories = Category.all
+    @articles = Article.all.order('created_at DESC')
+    @categories = Category.all.order('title')
   end
 
   def show
