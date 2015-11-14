@@ -9,9 +9,10 @@ class ArticlesController < ApplicationController
       @articles = Article.all.order('created_at DESC')
       @list_content = "List of all articles"
     else
-      @articles = Article.find([params[:category_id]])
+      @articles = Article.where(id: params[:category_id])
       @list_content = "Filter by " + Category.find(params[:category_id]).title
     end
+
   end
 
   def show
