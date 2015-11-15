@@ -18,7 +18,7 @@
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> Posted at: <%= article.created_at.to_formatted_s(:long_ordinal) %></p>
                 <hr>
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                <img class="img-responsive" src="<%= article.img_url %>" alt="">
                 <hr>
                 <p><%= article.text.truncate(300, separator: ' ') %></p>
                 <a class="btn btn-primary" href="<%= article_path(article)%>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
