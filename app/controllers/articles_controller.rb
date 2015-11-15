@@ -33,7 +33,6 @@ class ArticlesController < ApplicationController
   def create
     @category = Category.find(params[:article][:category])
     @article = @category.articles.create(article_params)
-    # @article = Article.new(article_params)
 
     if @article.save
       redirect_to @article
@@ -60,8 +59,8 @@ class ArticlesController < ApplicationController
   end
 
   private
-    def article_params
-      params.require(:article).permit(:title, :text, :img_url)
-    end
+  def article_params
+    params.require(:article).permit(:title, :text, :img_url)
+  end
 
 end

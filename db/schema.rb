@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151115041725) do
+ActiveRecord::Schema.define(version: 20151115082510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,9 +20,13 @@ ActiveRecord::Schema.define(version: 20151115041725) do
     t.string   "title"
     t.text     "text"
     t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.string   "img_url"
+    t.string   "img_url_file_name"
+    t.string   "img_url_content_type"
+    t.integer  "img_url_file_size"
+    t.datetime "img_url_updated_at"
   end
 
   add_index "articles", ["category_id"], name: "index_articles_on_category_id", using: :btree
@@ -43,6 +47,16 @@ ActiveRecord::Schema.define(version: 20151115041725) do
 
   add_index "comments", ["article_id"], name: "index_comments_on_article_id", using: :btree
 
+  create_table "tags", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "tags", ["article_id"], name: "index_tags_on_article_id", using: :btree
+
   add_foreign_key "articles", "categories"
   add_foreign_key "comments", "articles"
+  add_foreign_key "tags", "articles"
 end
