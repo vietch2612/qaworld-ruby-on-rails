@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
 
     if params[:category_id].nil? then
       @articles = Article.all.order('created_at DESC')
-      @list_content = "List of all articles"
+      @list_content = "All article"
     else
       @articles = Article.where(id: params[:category_id])
       @list_content = "Filter by " + Category.find(params[:category_id]).title

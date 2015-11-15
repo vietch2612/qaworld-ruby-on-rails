@@ -1,8 +1,9 @@
-<%= form_for([@article, @article.comments.build]) do |f| %>
+<%= form_for(Comment.new, url: article_comments_path(@article)) do |f| %>
 <div class="well">
   <h4>Leave a Comment:</h4>
   <form role="form">
     <div class="input-group">
+      <%= f.hidden_field :article_id, value: @article %>
       <span class="input-group-addon" id="sizing-addon2">@</span><!--
       <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2"> -->
       <%= f.text_field :commenter, :class => "form-control", :placeholder => "Username", :type => "text", :'aria-describedby' => "sizing-addon2" %>

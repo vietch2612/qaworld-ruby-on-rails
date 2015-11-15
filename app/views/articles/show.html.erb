@@ -10,7 +10,7 @@
                 </p>
                     <hr>
                     <!-- Date/Time -->
-                    <p><span class="glyphicon glyphicon-time"></span> Posted at: <%= @article.created_at %></p>
+                    <p><span class="glyphicon glyphicon-time"></span> Posted at: <%= @article.created_at.to_formatted_s(:long_ordinal) %></p>
                     <hr>
                     <!-- Preview Image -->
                     <img class="img-responsive" src="<%= @article.img_url %>" alt="">
@@ -28,11 +28,11 @@
                     <% @article.comments.each do |comment| %>
                         <div class="media">
                             <a class="pull-left" href="#">
-                                <img class="media-object" src="http://placehold.it/64x64" alt="">
+                                <img class="media-object" src="http://i.imgur.com/XAYgbnr.png" alt="">
                             </a>
                             <div class="media-body">
                                 <h4 class="media-heading"><%= comment.commenter%>
-                                <small><%= comment.created_at %></small>
+                                    <small><%= comment.created_at.to_formatted_s(:long_ordinal) %></small>
                                 </h4>
                                 <%= comment.body%>
                             </div>
